@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — Sourdough Diary</title>
+<style>
+  :root {
+    --bg: #F5EBDB;
+    --card: #FCF5E8;
+    --ink: #4D3829;
+    --ink-2: #806B57;
+    --accent: #C97A5C;
+    --rule: rgba(77, 56, 41, .14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #211913;
+      --card: #2B211A;
+      --ink: #EFE3D2;
+      --ink-2: #B09A83;
+      --accent: #E0997B;
+      --rule: rgba(239, 227, 210, .16);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0 20px 80px;
+    background: var(--bg);
+    color: var(--ink);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; }
+  header { padding: 56px 0 8px; }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(28px, 6vw, 38px);
+    line-height: 1.15;
+    margin: 0 0 6px;
+  }
+  .sub { color: var(--ink-2); font-size: 15px; margin: 0; }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 21px;
+    margin: 38px 0 10px;
+    padding-top: 22px;
+    border-top: 1px solid var(--rule);
+  }
+  h2:first-of-type { border-top: 0; padding-top: 0; }
+  h3 { font-size: 16px; margin: 24px 0 6px; }
+  p { margin: 0 0 14px; }
+  ul { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 7px; }
+  a { color: var(--accent); }
+  strong { font-weight: 600; }
+  .lede {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin: 26px 0 8px;
+    border-left: 4px solid var(--accent);
+  }
+  .lede p:last-child { margin-bottom: 0; }
+  .langbar { display: flex; gap: 10px; margin: 26px 0 0; flex-wrap: wrap; }
+  .langbar a {
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    padding: 7px 14px; border-radius: 999px;
+    background: var(--card); border: 1px solid var(--rule); color: var(--ink);
+  }
+  footer {
+    margin-top: 44px; padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-2); font-size: 14px;
+  }
+  section[lang="de"] { margin-top: 60px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Support</h1>
+  <p class="sub">Sourdough Diary</p>
+  <div class="langbar">
+    <a href="#en">English</a>
+    <a href="#de">Deutsch</a>
+  </div>
+</header>
+
+<section id="en" lang="en">
+
+  <div class="lede">
+    <p>Something broken, something confusing, or an idea for the app? Write to <a href="mailto:simon.eder@outlook.at">simon.eder@outlook.at</a>.</p>
+    <p>It's one person answering, so it may take a couple of days — but every message gets read.</p>
+  </div>
+
+  <h2>Things people ask</h2>
+
+  <h3>My timer went off silently</h3>
+  <p>iOS only lets an app play a real alarm sound while it is open on screen. When the app is in the background you get a notification instead, and that notification obeys your ringer switch. So: keep the ringer on, and you'll hear it. This is a limit of the operating system rather than a setting in the app.</p>
+
+  <h3>My diary isn't appearing on my other device</h3>
+  <p>Sync uses your own iCloud account. Check that both devices are signed in to the same Apple Account, that iCloud Drive is switched on, and that Sourdough Diary is enabled under <strong>Settings → your name → iCloud</strong>. The first sync after installing can take a few minutes. Settings inside the app will tell you whether it is syncing or running on that device alone.</p>
+
+  <h3>How do I move my diary to a new phone?</h3>
+  <p>If iCloud sync is on, install the app on the new phone and sign in to the same Apple Account — your diary arrives on its own. If sync is off, export a backup from <strong>Settings → Your data</strong> on the old phone first, then restore it on the new one.</p>
+
+  <h3>Can I get my data out?</h3>
+  <p>Yes. <strong>Settings → Your data → Export a backup</strong> writes a file you keep. It restores into the app on any device, and it's yours to store wherever you like.</p>
+
+  <h3>The timings don't match what my dough is doing</h3>
+  <p>The app's estimates come from your kitchen temperature and how fast your starter has peaked in the past, so they get better the more you log. Two things help most: check the temperature the app has for your kitchen is actually right, and log a peak when you catch one. And when the bowl disagrees with the clock, trust the bowl — that's what the bulk check-in is for.</p>
+
+  <h2>Reporting a problem</h2>
+  <p>The most useful bug report says what you did, what you expected, and what happened instead. A screenshot is worth a lot. If it involves timing, the time on your phone when it happened helps too.</p>
+
+  <h2>Privacy</h2>
+  <p>Your diary never leaves your device and your own iCloud. The app can optionally send anonymous usage statistics, which are off unless you switch them on in Settings. If you share a jar in a family tree, a few details about that jar are visible to its family. The full policy is <a href="privacy.html">here</a>.</p>
+
+</section>
+
+<section id="de" lang="de">
+
+  <h1>Support</h1>
+  <p class="sub">Sourdough Diary</p>
+
+  <div class="lede">
+    <p>Etwas kaputt, etwas unverständlich, oder eine Idee für die App? Schreib an <a href="mailto:simon.eder@outlook.at">simon.eder@outlook.at</a>.</p>
+    <p>Hier antwortet eine einzelne Person, es kann also ein paar Tage dauern — gelesen wird aber jede Nachricht.</p>
+  </div>
+
+  <h2>Häufige Fragen</h2>
+
+  <h3>Mein Timer war stumm</h3>
+  <p>iOS lässt eine App nur dann einen echten Alarmton abspielen, wenn sie geöffnet am Bildschirm ist. Läuft die App im Hintergrund, bekommst du stattdessen eine Mitteilung — und die richtet sich nach deinem Klingelschalter. Also: Klingelton eingeschaltet lassen, dann hörst du sie. Das ist eine Grenze des Betriebssystems und keine Einstellung in der App.</p>
+
+  <h3>Mein Tagebuch erscheint nicht auf meinem anderen Gerät</h3>
+  <p>Die Synchronisierung läuft über deinen eigenen iCloud-Account. Prüf, ob beide Geräte mit demselben Apple-Account angemeldet sind, ob iCloud Drive aktiv ist und ob Sourdough Diary unter <strong>Einstellungen → dein Name → iCloud</strong> aktiviert ist. Die erste Synchronisierung nach der Installation kann ein paar Minuten dauern. In den Einstellungen der App steht, ob gerade synchronisiert wird oder ob sie nur auf diesem Gerät läuft.</p>
+
+  <h3>Wie bringe ich mein Tagebuch auf ein neues Handy?</h3>
+  <p>Ist die iCloud-Synchronisierung aktiv, installierst du die App auf dem neuen Gerät und meldest dich mit demselben Apple-Account an — dein Tagebuch kommt von selbst. Ist sie aus, exportier vorher auf dem alten Gerät unter <strong>Einstellungen → Deine Daten</strong> eine Sicherung und stell sie auf dem neuen wieder her.</p>
+
+  <h3>Komme ich an meine Daten heran?</h3>
+  <p>Ja. <strong>Einstellungen → Deine Daten → Sicherung exportieren</strong> schreibt eine Datei, die dir gehört. Sie lässt sich auf jedem Gerät wieder einspielen, und du bewahrst sie auf, wo du möchtest.</p>
+
+  <h3>Die Zeiten passen nicht zu dem, was mein Teig macht</h3>
+  <p>Die Schätzungen der App kommen aus deiner Küchentemperatur und daraus, wie schnell dein Starter bisher seinen Höhepunkt erreicht hat — sie werden also besser, je mehr du einträgst. Zwei Dinge helfen am meisten: schau nach, ob die hinterlegte Küchentemperatur wirklich stimmt, und trag einen Höhepunkt ein, wenn du einen erwischst. Und wenn die Schüssel der Uhr widerspricht, glaub der Schüssel — genau dafür ist der Zwischenstand bei der Stockgare da.</p>
+
+  <h2>Einen Fehler melden</h2>
+  <p>Am hilfreichsten ist eine Meldung, die sagt: was du gemacht hast, was du erwartet hast und was stattdessen passiert ist. Ein Screenshot ist viel wert. Wenn es um Zeiten geht, hilft auch die Uhrzeit auf deinem Gerät.</p>
+
+  <h2>Datenschutz</h2>
+  <p>Dein Tagebuch verlässt weder dein Gerät noch deine eigene iCloud. Die App kann freiwillig anonyme Nutzungsstatistik senden — die ist aus, solange du sie nicht in den Einstellungen einschaltest. Teilst du ein Glas im Stammbaum, sind ein paar Angaben zu diesem Glas für seine Familie sichtbar. Die vollständige Erklärung steht <a href="privacy.html">hier</a>.</p>
+
+</section>
+
+<footer>
+  <p>Sourdough Diary · simon.eder@outlook.at</p>
+</footer>
+
+</div>
+</body>
+</html>

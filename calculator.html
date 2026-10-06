@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-lang="en" data-static data-store="soon">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sourdough starter calculator: feeding ratio and peak time</title>
+<meta name="description" content="Work out how much starter, flour and water to mix for a feeding ratio, and roughly when your starter will peak.">
+<meta property="og:title" content="Sourdough starter calculator: feeding ratio and peak time">
+<meta property="og:description" content="Work out how much starter, flour and water to mix for a feeding ratio, and roughly when your starter will peak.">
+<meta property="og:image" content="https://sourdoughdaddy.github.io/sourdough-diary-pages/assets/landing/og-en.jpg">
+<meta property="og:url" content="https://sourdoughdaddy.github.io/sourdough-diary-pages/calculator.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9F2E8">
+<link rel="canonical" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/calculator.html">
+<link rel="alternate" hreflang="en" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/calculator.html">
+<link rel="alternate" hreflang="de" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "headline": "Sourdough starter calculator: feeding ratio and peak time", "description": "Work out how much starter, flour and water to mix for a feeding ratio, and roughly when your starter will peak.", "inLanguage": "en", "mainEntityOfPage": "https://sourdoughdaddy.github.io/sourdough-diary-pages/calculator.html", "author": {"@type": "Person", "name": "Simon Eder"}, "publisher": {"@type": "Organization", "name": "Sourdough Diary"}, "image": "https://sourdoughdaddy.github.io/sourdough-diary-pages/assets/landing/og-en.jpg"}</script>
+<link rel="icon" href="assets/landing/icon.png">
+<link rel="stylesheet" href="assets/site.css?v=10052146">
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="./" aria-label="Sourdough Diary">
+    <img src="assets/landing/icon.png" alt="" width="34" height="34">
+    <span>Sourdough Diary</span>
+  </a>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="pages"><span lang="en">Menu</span></button>
+  <nav class="nav-links" id="pages" aria-label="Pages">
+    <a href="starter.html">Starter</a>
+    <a href="baking.html"><span lang="en">Baking</span></a>
+    <a href="diary.html"><span lang="en">Diary</span></a>
+    <a href="learn.html"><span lang="en">Learn</span></a>
+    <a href="library/"><span lang="en">Library</span></a>
+    <a href="blog/" data-blog>Blog</a>
+  </nav>
+  <div class="langs" role="group" aria-label="Language">
+    <a href="https://sourdoughdaddy.github.io/sourdough-diary-pages/calculator.html" hreflang="en" aria-label="English" aria-current="true"><span class="long">English</span><span class="short">EN</span></a>
+    <a href="https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html" hreflang="de" aria-label="Deutsch"><span class="long">Deutsch</span><span class="short">DE</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="article wrap">
+    <h1>Starter calculator</h1>
+    <p class="bite">What to weigh for a feed, and roughly when the jar will peak.</p>
+    <form class="calc" data-calc onsubmit="return false">
+      <label>Ripe starter you need <span><input type="number" name="need" value="100" min="10" max="1000" step="10" inputmode="numeric"> g</span></label>
+      <label class="check"><input type="checkbox" name="keep" checked> Keep 20 g for the jar</label>
+      <label>Feeding ratio <span><select name="ratio"><option value="1">1:1:1</option><option value="2">1:2:2</option><option value="3">1:3:3</option><option value="4">1:4:4</option><option value="5" selected>1:5:5</option><option value="7">1:7:7</option><option value="10">1:10:10</option></select></span></label>
+      <label>Kitchen temperature <span><input type="number" name="temp" value="22" min="14" max="34" step="0.5" inputmode="decimal"> °C</span></label>
+      <label>Your starter at 1:1:1 and 22°C peaks after <span><input type="number" name="base" value="4" min="1" max="16" step="0.5" inputmode="decimal"> hours</span></label>
+      <label>Feeding at <span><input type="time" name="fed"></span></label>
+    </form>
+    <div class="calc-out" aria-live="polite">
+      <div>
+        <p class="calc-label">Weigh out</p>
+        <p class="calc-row"><span>Starter</span><strong data-out="starter">0 g</strong></p>
+        <p class="calc-row"><span>Flour</span><strong data-out="flour">0 g</strong></p>
+        <p class="calc-row"><span>Water</span><strong data-out="water">0 g</strong></p>
+        <p class="calc-note">Makes <span data-out="total">0 g</span>. <span data-out="min" hidden>Scaled up so you never weigh less than 10 g of starter.</span></p>
+      </div>
+      <div>
+        <p class="calc-label">Peaks after about</p>
+        <p class="calc-big" data-out="hours">0 h</p>
+        <p class="calc-note">around <span data-out="clock"></span></p>
+      </div>
+    </div>
+    <h2>How it is worked out</h2>
+    <p>The amounts include a tenth extra, for what sticks to the jar and the spoon.</p>
+    <p>Time to peak grows with the square root of the food: four times the food takes about twice as long.</p>
+    <p>Fermentation roughly doubles in speed for every 10°C, so a warm kitchen shortens the wait and a cool one stretches it.</p>
+    <p>This is an estimate from one number about your starter. The app does the same sum from your own feedings and corrects itself each time you tell it the jar has peaked.</p>
+  </section>
+  <aside class="article-cta">
+    <h2>The app reads this against your own loaf</h2>
+    <p>Sourdough Diary links the right piece when a bake goes wrong, with what happened in your log and the one thing to change.</p>
+    <a class="cta when-live" data-store-link href="#">Download on the App Store</a>
+    <span class="cta when-soon">Coming soon to the App Store</span>
+  </aside>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>Sourdough Diary</span>
+    <nav aria-label="Footer">
+      <a href="library/"><span lang="en">Library</span></a>
+      <a href="blog/" data-blog>Blog</a>
+      <a href="calculator.html"><span lang="en">Calculator</span></a>
+      <a href="glossary.html"><span lang="en">Glossary</span></a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html"><span lang="en">About</span></a>
+      <a href="privacy.html"><span lang="en">Privacy</span></a>
+      <a href="support.html">Support</a>
+      <a href="#" data-consent>Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/site.js?v=10052146"></script>
+</body>
+</html>
