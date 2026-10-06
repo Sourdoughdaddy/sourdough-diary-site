@@ -578,3 +578,13 @@
   .see { margin: 8px 0 0; font-size: 1rem; }
   .see a { margin-right: 14px; white-space: nowrap; }
   .words { margin-top: 28px !important; font-size: 1rem !important; color: var(--ink-soft); }
+
+  .article .table { overflow-x: auto; margin: 20px 0; }
+  .article table { border-collapse: collapse; width: 100%; font-size: 1.02rem; font-variant-numeric: tabular-nums; }
+  .article th { text-align: left; font-weight: 600; padding: 10px 14px 10px 0; border-bottom: 1.5px solid var(--ink); white-space: nowrap; }
+  .article td { padding: 10px 14px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  @media (max-width: 600px) {
+    .article table { font-size: .94rem; }
+    .article th { white-space: normal; vertical-align: bottom; }
+    .article th, .article td { padding-right: 10px; }
+  }
