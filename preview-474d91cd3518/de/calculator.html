@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="de" data-lang="de" data-static data-store="soon">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sauerteig-Rechner: Fütterungsverhältnis und Höhepunkt</title>
+<meta name="description" content="Rechne aus, wie viel Starter, Mehl und Wasser du für ein Fütterungsverhältnis brauchst und wann dein Starter ungefähr am Höhepunkt ist.">
+<meta property="og:title" content="Sauerteig-Rechner: Fütterungsverhältnis und Höhepunkt">
+<meta property="og:description" content="Rechne aus, wie viel Starter, Mehl und Wasser du für ein Fütterungsverhältnis brauchst und wann dein Starter ungefähr am Höhepunkt ist.">
+<meta property="og:image" content="https://sourdoughdaddy.github.io/sourdough-diary-pages/assets/landing/og-de.jpg">
+<meta property="og:url" content="https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9F2E8">
+<link rel="canonical" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html">
+<link rel="alternate" hreflang="en" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/calculator.html">
+<link rel="alternate" hreflang="de" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "headline": "Sauerteig-Rechner: Fütterungsverhältnis und Höhepunkt", "description": "Rechne aus, wie viel Starter, Mehl und Wasser du für ein Fütterungsverhältnis brauchst und wann dein Starter ungefähr am Höhepunkt ist.", "inLanguage": "de", "mainEntityOfPage": "https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html", "author": {"@type": "Person", "name": "Simon Eder"}, "publisher": {"@type": "Organization", "name": "Sourdough Diary"}, "image": "https://sourdoughdaddy.github.io/sourdough-diary-pages/assets/landing/og-de.jpg"}</script>
+<link rel="icon" href="../assets/landing/icon.png">
+<link rel="stylesheet" href="../assets/site.css?v=10071524">
+</head>
+<body>
+
+<header class="wrap nav">
+  <a class="brand" href="./" aria-label="Sourdough Diary">
+    <img src="../assets/landing/icon.png" alt="" width="34" height="34">
+    <span>Sourdough Diary</span>
+  </a>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="pages"><span lang="de">Menü</span></button>
+  <nav class="nav-links" id="pages" aria-label="Pages">
+    <a href="starter.html">Starter</a>
+    <a href="baking.html"><span lang="de">Backen</span></a>
+    <a href="diary.html"><span lang="de">Tagebuch</span></a>
+    <a href="learn.html"><span lang="de">Lernen</span></a>
+    <div class="more">
+      <button class="more-btn" type="button" aria-expanded="false" aria-controls="resources"><span lang="de">Ressourcen</span></button>
+      <div class="more-menu" id="resources">
+        <a href="library/"><span lang="de">Bibliothek</span></a>
+        <a href="blog/" data-blog>Blog</a>
+        <a href="calculator.html" aria-current="page"><span lang="de">Starter-Rechner</span></a>
+        <a href="glossary.html"><span lang="de">Glossar</span></a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+  </nav>
+  <div class="langs" role="group" aria-label="Language">
+    <a href="https://sourdoughdaddy.github.io/sourdough-diary-site/preview-474d91cd3518/calculator.html" hreflang="en" aria-label="English"><span class="long">English</span><span class="short">EN</span></a>
+    <a href="https://sourdoughdaddy.github.io/sourdough-diary-site/preview-474d91cd3518/de/calculator.html" hreflang="de" aria-label="Deutsch" aria-current="true"><span class="long">Deutsch</span><span class="short">DE</span></a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="page-hero calc-hero">
+    <div class="wrap calc-grid">
+      <div class="calc-copy">
+        <h1>Was du abwiegst, <em>und wann er so weit ist.</em></h1>
+        <p class="lede">Ein Rechner für deinen Sauerteig-Starter. Sag, wie viel reifen Starter du brauchst und wie du füttern willst.</p>
+        <form class="calc" data-calc data-h="Std." data-min="Min." data-next="am nächsten Tag" onsubmit="return false">
+          <h2>Die Fütterung</h2>
+          <div class="field"><label for="need">Reifer Starter, den du brauchst</label><span class="stepper"><button type="button" data-step="-1" aria-label="Weniger">−</button><span class="stepper-value"><input type="number" name="need" id="need" value="100" min="10" max="1000" step="10" inputmode="numeric"><em>g</em></span><button type="button" data-step="1" aria-label="Mehr">+</button></span></div>
+          <label class="field switch"><span>20 g fürs Glas behalten</span><input type="checkbox" name="keep" checked><i aria-hidden="true"></i></label>
+          <fieldset class="field stack"><legend>Fütterungsverhältnis</legend><div class="chips"><label class="chip"><input type="radio" name="ratio" value="1"><span><b>1:1:1</b><i data-chip="1"></i></span></label><label class="chip"><input type="radio" name="ratio" value="2"><span><b>1:2:2</b><i data-chip="2"></i></span></label><label class="chip"><input type="radio" name="ratio" value="3"><span><b>1:3:3</b><i data-chip="3"></i></span></label><label class="chip"><input type="radio" name="ratio" value="4"><span><b>1:4:4</b><i data-chip="4"></i></span></label><label class="chip"><input type="radio" name="ratio" value="5" checked><span><b>1:5:5</b><i data-chip="5"></i></span></label><label class="chip"><input type="radio" name="ratio" value="7"><span><b>1:7:7</b><i data-chip="7"></i></span></label><label class="chip"><input type="radio" name="ratio" value="10"><span><b>1:10:10</b><i data-chip="10"></i></span></label></div></fieldset>
+          <h2>Deine Küche</h2>
+          <div class="field"><label for="temp">Küchentemperatur</label><span class="stepper"><button type="button" data-step="-1" aria-label="Weniger">−</button><span class="stepper-value"><input type="number" name="temp" id="temp" value="22" min="14" max="34" step="1" inputmode="decimal"><em>°C</em></span><button type="button" data-step="1" aria-label="Mehr">+</button></span></div>
+          <div class="field"><label for="base">Dein Starter braucht nach 1:1:1 bei 22 °C bis zum Höhepunkt</label><span class="stepper"><button type="button" data-step="-1" aria-label="Weniger">−</button><span class="stepper-value"><input type="number" name="base" id="base" value="4" min="1" max="16" step="0.5" inputmode="decimal"><em>Std.</em></span><button type="button" data-step="1" aria-label="Mehr">+</button></span></div>
+          <div class="field"><label for="fed">Gefüttert um</label><input type="time" name="fed" id="fed"></div>
+          <a class="calc-bar" href="#result" aria-hidden="true" tabindex="-1"><span data-mini="mix"></span><strong data-mini="hours"></strong></a>
+        </form>
+      </div>
+      <div class="calc-stage">
+        <div class="phone calc-phone" id="result" aria-live="polite">
+          <div class="screens app">
+            <p class="app-title">Deine Fütterung</p>
+            <div class="app-card app-jar">
+              <svg class="jar" viewBox="0 0 200 236" aria-hidden="true">
+              <defs>
+                <pattern id="gingham" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#F4F3E6"/><rect width="9" height="18" fill="#8FA67E" opacity=".55"/><rect width="18" height="9" fill="#8FA67E" opacity=".55"/></pattern>
+                <clipPath id="glass"><rect x="32" y="52" width="136" height="172" rx="16"/></clipPath>
+              </defs>
+              <rect x="32" y="52" width="136" height="172" rx="16" fill="#FFFBF3"/>
+              <g clip-path="url(#glass)"><rect class="jar-level" x="32" y="52" width="136" height="172" fill="#EBD5A9"/><circle cx="68" cy="206" r="5" fill="#F6E7C6"/></g>
+              <rect x="32" y="52" width="136" height="172" rx="16" fill="none" stroke="#DCCBAE" stroke-width="2"/>
+              <path d="M22 60 Q24 24 100 24 Q176 24 178 60 Q170 72 161 60 Q152 72 143 60 Q134 72 126 60 Q117 72 109 60 Q100 72 91 60 Q83 72 74 60 Q66 72 57 60 Q48 72 39 60 Q30 72 22 60Z" fill="url(#gingham)" stroke="#B9C4A2" stroke-width="1"/>
+              <path d="M30 52 H170" stroke="#7A5A44" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M100 58 L82 50 V68Z M100 58 L118 50 V68Z" fill="#C9372C"/><circle cx="100" cy="58" r="4.5" fill="#A82A21"/>
+              <g transform="rotate(-3 100 132)"><rect x="56" y="112" width="88" height="40" rx="5" fill="#FFF9EE" stroke="#B5694D" stroke-width="2"/><text x="100" y="139" text-anchor="middle" data-out="jar">0 g</text></g>
+            </svg>
+              <p class="app-label">Höhepunkt nach etwa</p>
+              <p class="app-big" data-out="hours">0 h</p>
+              <p class="app-times"><span data-out="fedat"></span> gefüttert <span class="arrow">→</span> <span data-out="clock"></span> Höhepunkt <small data-out="next" hidden></small></p>
+            </div>
+            <div class="app-card app-mix">
+              <p class="app-label">Abwiegen</p>
+              <p class="app-row"><span>Starter</span><strong data-out="starter">0 g</strong></p>
+              <p class="app-row"><span>Mehl</span><strong data-out="flour">0 g</strong></p>
+              <p class="app-row"><span>Wasser</span><strong data-out="water">0 g</strong></p>
+              <p class="app-note">Ergibt <span data-out="total">0 g</span>. <span data-out="min" hidden>Hochgerechnet, damit du nie weniger als 10 g Starter abwiegst.</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="feature">
+    <div class="wrap">
+      <h2>So wird gerechnet</h2>
+      <div class="trio">
+        <div class="note">
+          <h3>Ein Zehntel mehr</h3>
+          <p>Die Mengen enthalten ein Zehntel mehr als gewünscht, für das, was an Glas und Löffel hängen bleibt.</p>
+        </div>
+        <div class="note">
+          <h3>Mehr Futter, mehr Zeit</h3>
+          <p>Die Zeit bis zum Höhepunkt wächst mit der Wurzel der Futtermenge: Viermal so viel Futter braucht etwa doppelt so lang.</p>
+        </div>
+        <div class="note">
+          <h3>Warm ist schnell</h3>
+          <p>Die Gärung wird pro 10 °C ungefähr doppelt so schnell. Eine warme Küche verkürzt das Warten, eine kühle verlängert es.</p>
+        </div>
+      </div>
+      <p class="lede calc-app">Das ist eine Schätzung aus einer einzigen Zahl über deinen Starter. Die App rechnet genauso, aber aus deinen eigenen Fütterungen, und korrigiert sich jedes Mal, wenn du ihr sagst, dass das Glas am Höhepunkt ist.</p>
+      <p class="text-links"><a href="blog/fuetterungsverhaeltnis-sauerteig.html">Welches Fütterungsverhältnis soll ich nehmen?</a><a href="glossary.html">Glossar</a></p>
+      <p class="updated">Aktualisiert am 7. Oktober 2026</p>
+    </div>
+  </section>
+  <aside class="article-cta">
+    <h2>Die App lernt dein eigenes Glas</h2>
+    <p>Sourdough Diary sagt den Höhepunkt aus deinen eigenen Fütterungen voraus, erinnert dich rechtzeitig und plant den ganzen Backtag rückwärts von dem Moment, an dem du Brot willst.</p>
+    <a class="cta when-live" data-store-link href="#">Laden im App Store</a>
+    <span class="cta when-soon">Bald im App Store</span>
+  </aside>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="what" lang="de">Sourdough Diary ist eine App für iPhone und iPad, die dich durchs Backen mit Sauerteig führt.</span>
+    <nav aria-label="Footer">
+      <a href="library/"><span lang="de">Bibliothek</span></a>
+      <a href="blog/" data-blog>Blog</a>
+      <a href="calculator.html"><span lang="de">Rechner</span></a>
+      <a href="glossary.html"><span lang="de">Glossar</span></a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html"><span lang="de">Über</span></a>
+      <a href="../privacy.html"><span lang="de">Datenschutz</span></a>
+      <a href="../support.html">Support</a>
+      <a href="#" data-consent>Cookies</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/site.js?v=10071524"></script>
+</body>
+</html>
