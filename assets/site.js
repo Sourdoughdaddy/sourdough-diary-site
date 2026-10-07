@@ -111,10 +111,10 @@
         outs.water.textContent = flour + " g";
         outs.total.textContent = (starter + 2 * flour) + " g";
         outs.min.hidden = starter === exact;
-        // the jar shows the three parts in proportion; the starter stays visible at high ratios
-        layers.starter.style.flexGrow = Math.max(starter, (starter + 2 * flour) * 0.06);
-        layers.flour.style.flexGrow = flour;
-        layers.water.style.flexGrow = flour;
+        // the jar fills with the amount you are making
+        var all = starter + 2 * flour;
+        outs.jar.textContent = all + " g";
+        calc.parentNode.parentNode.style.setProperty("--level", Math.min(.82, Math.max(.2, .2 + all / 600)).toFixed(3));
         var base = parseFloat(calc.base.value) || 4, temp = parseFloat(calc.temp.value) || 22;
         var warmth = Math.pow(2, -(temp - 22) / 10);
         var hours = base * Math.sqrt(r) * warmth;
