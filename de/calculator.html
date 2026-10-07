@@ -17,7 +17,7 @@
 <link rel="alternate" hreflang="de" href="https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "headline": "Sauerteig-Rechner: Fütterungsverhältnis und Höhepunkt", "description": "Rechne aus, wie viel Starter, Mehl und Wasser du für ein Fütterungsverhältnis brauchst und wann dein Starter ungefähr am Höhepunkt ist.", "inLanguage": "de", "mainEntityOfPage": "https://sourdoughdaddy.github.io/sourdough-diary-pages/de/calculator.html", "author": {"@type": "Person", "name": "Simon Eder"}, "publisher": {"@type": "Organization", "name": "Sourdough Diary"}, "image": "https://sourdoughdaddy.github.io/sourdough-diary-pages/assets/landing/og-de.jpg"}</script>
 <link rel="icon" href="../assets/landing/icon.png">
-<link rel="stylesheet" href="../assets/site.css?v=10070606">
+<link rel="stylesheet" href="../assets/site.css?v=10070900">
 </head>
 <body>
 
@@ -50,42 +50,66 @@
 </header>
 
 <main id="top">
-  <section class="article wrap">
-    <h1>Starter-Rechner</h1>
-    <p class="bite">Was du fürs Füttern abwiegst, und wann das Glas ungefähr am Höhepunkt ist.</p>
-    <form class="calc" data-calc onsubmit="return false">
-      <label>Reifer Starter, den du brauchst <span><input type="number" name="need" value="100" min="10" max="1000" step="10" inputmode="numeric"> g</span></label>
-      <label class="check"><input type="checkbox" name="keep" checked> 20 g fürs Glas behalten</label>
-      <label>Fütterungsverhältnis <span><select name="ratio"><option value="1">1:1:1</option><option value="2">1:2:2</option><option value="3">1:3:3</option><option value="4">1:4:4</option><option value="5" selected>1:5:5</option><option value="7">1:7:7</option><option value="10">1:10:10</option></select></span></label>
-      <label>Küchentemperatur <span><input type="number" name="temp" value="22" min="14" max="34" step="0.5" inputmode="decimal"> °C</span></label>
-      <label>Dein Starter ist bei 1:1:1 und 22 °C am Höhepunkt nach <span><input type="number" name="base" value="4" min="1" max="16" step="0.5" inputmode="decimal"> Stunden</span></label>
-      <label>Gefüttert um <span><input type="time" name="fed"></span></label>
-    </form>
-    <div class="calc-out" aria-live="polite">
-      <div>
-        <p class="calc-label">Abwiegen</p>
-        <p class="calc-row"><span>Starter</span><strong data-out="starter">0 g</strong></p>
-        <p class="calc-row"><span>Mehl</span><strong data-out="flour">0 g</strong></p>
-        <p class="calc-row"><span>Wasser</span><strong data-out="water">0 g</strong></p>
-        <p class="calc-note">Ergibt <span data-out="total">0 g</span>. <span data-out="min" hidden>Hochgerechnet, damit du nie weniger als 10 g Starter abwiegst.</span></p>
+  <section class="page-hero calc-hero">
+    <div class="wrap calc-grid">
+      <div class="calc-copy">
+        <h1>Was du abwiegst, <em>und wann er so weit ist.</em></h1>
+        <p class="lede">Ein Rechner für deinen Sauerteig-Starter. Sag, wie viel reifen Starter du brauchst und wie du füttern willst.</p>
+        <form class="calc" data-calc data-h="Std." data-min="Min." data-next="am nächsten Tag" onsubmit="return false">
+          <div class="field"><label for="need">Reifer Starter, den du brauchst</label><span class="stepper"><button type="button" data-step="-1" aria-label="Weniger">−</button><span class="stepper-value"><input type="number" name="need" id="need" value="100" min="10" max="1000" step="10" inputmode="numeric"><em>g</em></span><button type="button" data-step="1" aria-label="Mehr">+</button></span></div>
+          <label class="field switch"><span>20 g fürs Glas behalten</span><input type="checkbox" name="keep" checked><i aria-hidden="true"></i></label>
+          <fieldset class="field stack"><legend>Fütterungsverhältnis</legend><div class="chips"><label class="chip"><input type="radio" name="ratio" value="1"><span><b>1:1:1</b><i data-chip="1"></i></span></label><label class="chip"><input type="radio" name="ratio" value="2"><span><b>1:2:2</b><i data-chip="2"></i></span></label><label class="chip"><input type="radio" name="ratio" value="3"><span><b>1:3:3</b><i data-chip="3"></i></span></label><label class="chip"><input type="radio" name="ratio" value="4"><span><b>1:4:4</b><i data-chip="4"></i></span></label><label class="chip"><input type="radio" name="ratio" value="5" checked><span><b>1:5:5</b><i data-chip="5"></i></span></label><label class="chip"><input type="radio" name="ratio" value="7"><span><b>1:7:7</b><i data-chip="7"></i></span></label><label class="chip"><input type="radio" name="ratio" value="10"><span><b>1:10:10</b><i data-chip="10"></i></span></label></div></fieldset>
+          <div class="field"><label for="temp">Küchentemperatur</label><span class="stepper"><button type="button" data-step="-1" aria-label="Weniger">−</button><span class="stepper-value"><input type="number" name="temp" id="temp" value="22" min="14" max="34" step="1" inputmode="decimal"><em>°C</em></span><button type="button" data-step="1" aria-label="Mehr">+</button></span></div>
+          <div class="field"><label for="base">Dein Starter braucht nach 1:1:1 bei 22 °C bis zum Höhepunkt</label><span class="stepper"><button type="button" data-step="-1" aria-label="Weniger">−</button><span class="stepper-value"><input type="number" name="base" id="base" value="4" min="1" max="16" step="0.5" inputmode="decimal"><em>Std.</em></span><button type="button" data-step="1" aria-label="Mehr">+</button></span></div>
+          <div class="field"><label for="fed">Gefüttert um</label><input type="time" name="fed" id="fed"></div>
+          <a class="calc-bar" href="#result" aria-hidden="true" tabindex="-1"><span data-mini="mix"></span><strong data-mini="hours"></strong></a>
+        </form>
       </div>
-      <div>
-        <p class="calc-label">Höhepunkt nach etwa</p>
-        <p class="calc-big" data-out="hours">0 h</p>
-        <p class="calc-note">gegen <span data-out="clock"></span></p>
+      <div class="calc-card" id="result" aria-live="polite">
+        <div class="calc-top">
+          <div class="jar" aria-hidden="true"><div class="jar-lid"></div><div class="jar-glass"><div class="jar-fill"><i class="l-water" data-layer="water"></i><i class="l-flour" data-layer="flour"></i><i class="l-starter" data-layer="starter"></i></div></div></div>
+          <div class="weigh">
+            <p class="calc-label">Abwiegen</p>
+            <p class="calc-row"><span><i class="dot l-starter"></i>Starter</span><strong data-out="starter">0 g</strong></p>
+            <p class="calc-row"><span><i class="dot l-flour"></i>Mehl</span><strong data-out="flour">0 g</strong></p>
+            <p class="calc-row"><span><i class="dot l-water"></i>Wasser</span><strong data-out="water">0 g</strong></p>
+            <p class="calc-note">Ergibt <span data-out="total">0 g</span>. <span data-out="min" hidden>Hochgerechnet, damit du nie weniger als 10 g Starter abwiegst.</span></p>
+          </div>
+        </div>
+        <div class="peak">
+          <p class="calc-label">Höhepunkt nach etwa</p>
+          <p class="calc-big" data-out="hours">0 h</p>
+          <svg class="rise" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M2 64 C 90 64, 150 60, 215 14 S 262 8, 298 22"/></svg>
+          <div class="rise-ends"><span><b data-out="fedat"></b>gefüttert</span><span><b data-out="clock"></b>Höhepunkt <small data-out="next" hidden></small></span></div>
+        </div>
       </div>
     </div>
-    <h2>So wird gerechnet</h2>
-    <p>Die Mengen enthalten ein Zehntel mehr, für das, was an Glas und Löffel hängen bleibt.</p>
-    <p>Die Zeit bis zum Höhepunkt wächst mit der Wurzel der Futtermenge: Viermal so viel Futter braucht etwa doppelt so lang.</p>
-    <p>Die Gärung wird pro 10 °C ungefähr doppelt so schnell. Eine warme Küche verkürzt das Warten, eine kühle verlängert es.</p>
-    <p>Das ist eine Schätzung aus einer einzigen Zahl über deinen Starter. Die App rechnet genauso, aber aus deinen eigenen Fütterungen, und korrigiert sich jedes Mal, wenn du ihr sagst, dass das Glas am Höhepunkt ist.</p>
-    <p class="updated">Aktualisiert am 6. Oktober 2026</p>
-    <p class="text-links"><a href="blog/fuetterungsverhaeltnis-sauerteig.html">Welches Fütterungsverhältnis soll ich nehmen?</a></p>
+  </section>
+  <section class="feature">
+    <div class="wrap">
+      <h2>So wird gerechnet</h2>
+      <div class="trio">
+        <div class="note">
+          <h3>Ein Zehntel mehr</h3>
+          <p>Die Mengen enthalten ein Zehntel mehr als gewünscht, für das, was an Glas und Löffel hängen bleibt.</p>
+        </div>
+        <div class="note">
+          <h3>Mehr Futter, mehr Zeit</h3>
+          <p>Die Zeit bis zum Höhepunkt wächst mit der Wurzel der Futtermenge: Viermal so viel Futter braucht etwa doppelt so lang.</p>
+        </div>
+        <div class="note">
+          <h3>Warm ist schnell</h3>
+          <p>Die Gärung wird pro 10 °C ungefähr doppelt so schnell. Eine warme Küche verkürzt das Warten, eine kühle verlängert es.</p>
+        </div>
+      </div>
+      <p class="lede calc-app">Das ist eine Schätzung aus einer einzigen Zahl über deinen Starter. Die App rechnet genauso, aber aus deinen eigenen Fütterungen, und korrigiert sich jedes Mal, wenn du ihr sagst, dass das Glas am Höhepunkt ist.</p>
+      <p class="text-links"><a href="blog/fuetterungsverhaeltnis-sauerteig.html">Welches Fütterungsverhältnis soll ich nehmen?</a><a href="glossary.html">Glossar</a></p>
+      <p class="updated">Aktualisiert am 6. Oktober 2026</p>
+    </div>
   </section>
   <aside class="article-cta">
-    <h2>Die App liest das gegen dein eigenes Brot</h2>
-    <p>Sourdough Diary verlinkt den richtigen Text, wenn ein Brot danebengeht, mit dem, was in deinem Protokoll passiert ist, und der einen Sache zum Ändern.</p>
+    <h2>Die App lernt dein eigenes Glas</h2>
+    <p>Sourdough Diary sagt den Höhepunkt aus deinen eigenen Fütterungen voraus, erinnert dich rechtzeitig und plant den ganzen Backtag rückwärts von dem Moment, an dem du Brot willst.</p>
     <a class="cta when-live" data-store-link href="#">Laden im App Store</a>
     <span class="cta when-soon">Bald im App Store</span>
   </aside>
@@ -108,6 +132,6 @@
   </div>
 </footer>
 
-<script src="../assets/site.js?v=10070606"></script>
+<script src="../assets/site.js?v=10070900"></script>
 </body>
 </html>

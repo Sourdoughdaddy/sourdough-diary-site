@@ -86,13 +86,22 @@
     // time grows with the square root of the food, and halves per 10 degrees.
     var calc = document.querySelector("[data-calc]");
     if (calc) {
-      var outs = {};
+      var outs = {}, layers = {}, chipTimes = {};
       document.querySelectorAll("[data-out]").forEach(function (el) { outs[el.getAttribute("data-out")] = el; });
+      document.querySelectorAll("[data-layer]").forEach(function (el) { layers[el.getAttribute("data-layer")] = el; });
+      document.querySelectorAll("[data-chip]").forEach(function (el) { chipTimes[el.getAttribute("data-chip")] = el; });
+      var unitH = calc.getAttribute("data-h"), unitMin = calc.getAttribute("data-min");
+      var two = function (n) { return ("0" + n).slice(-2); };
+      var span = function (hours, short) {
+        var h = Math.floor(hours), m = Math.round((hours - h) * 60 / 5) * 5;
+        if (m === 60) { h += 1; m = 0; }
+        return h + " " + unitH + (m ? " " + m + (short ? "" : " " + unitMin) : "");
+      };
       var now = new Date();
-      calc.fed.value = ("0" + now.getHours()).slice(-2) + ":" + ("0" + now.getMinutes()).slice(-2);
+      calc.fed.value = two(now.getHours()) + ":" + two(now.getMinutes());
       var figure = function () {
         var need = Math.max(0, parseFloat(calc.need.value) || 0) + (calc.keep.checked ? 20 : 0);
-        var r = parseInt(calc.ratio.value, 10);
+        var r = parseInt(calc.ratio.value, 10) || 5;
         var target = Math.round(need * 1.1 * 100) / 100;
         var exact = Math.max(1, Math.ceil(target / (1 + 2 * r)));
         var starter = Math.max(exact, 10);
@@ -102,16 +111,34 @@
         outs.water.textContent = flour + " g";
         outs.total.textContent = (starter + 2 * flour) + " g";
         outs.min.hidden = starter === exact;
+        // the jar shows the three parts in proportion; the starter stays visible at high ratios
+        layers.starter.style.flexGrow = Math.max(starter, (starter + 2 * flour) * 0.06);
+        layers.flour.style.flexGrow = flour;
+        layers.water.style.flexGrow = flour;
         var base = parseFloat(calc.base.value) || 4, temp = parseFloat(calc.temp.value) || 22;
-        var hours = base * Math.sqrt(r) * Math.pow(2, -(temp - 22) / 10);
-        var h = Math.floor(hours), m = Math.round((hours - h) * 60 / 5) * 5;
-        if (m === 60) { h += 1; m = 0; }
-        outs.hours.textContent = h + " h" + (m ? " " + m + " min" : "");
+        var warmth = Math.pow(2, -(temp - 22) / 10);
+        var hours = base * Math.sqrt(r) * warmth;
+        outs.hours.textContent = span(hours);
+        calc.querySelector('[data-mini="mix"]').textContent = starter + " g \u00b7 " + flour + " g \u00b7 " + flour + " g";
+        calc.querySelector('[data-mini="hours"]').textContent = span(hours);
+        for (var k in chipTimes) chipTimes[k].textContent = span(base * Math.sqrt(+k) * warmth, true);
         var t = (calc.fed.value || "08:00").split(":");
         var peak = new Date(2000, 0, 1, +t[0], +t[1] + Math.round(hours * 60));
-        outs.clock.textContent = ("0" + peak.getHours()).slice(-2) + ":" + ("0" + peak.getMinutes()).slice(-2);
+        outs.fedat.textContent = two(+t[0]) + ":" + two(+t[1]);
+        outs.clock.textContent = two(peak.getHours()) + ":" + two(peak.getMinutes());
+        outs.next.hidden = peak.getDate() === 1;
+        outs.next.textContent = calc.getAttribute("data-next");
       };
       calc.addEventListener("input", figure);
+      calc.addEventListener("click", function (e) {
+        var btn = e.target.closest ? e.target.closest("[data-step]") : null;
+        if (!btn) return;
+        var input = btn.parentNode.querySelector("input");
+        var step = parseFloat(input.step) || 1, lo = parseFloat(input.min), hi = parseFloat(input.max);
+        var v = (parseFloat(input.value) || 0) + step * +btn.getAttribute("data-step");
+        input.value = Math.min(hi, Math.max(lo, Math.round(v * 100) / 100));
+        figure();
+      });
       figure();
     }
 
