@@ -199,6 +199,8 @@
     var pan = document.querySelector("[data-pan]");
     var rail = pan && pan.querySelector(".pan-rail");
     var stops = pan ? [].slice.call(pan.querySelectorAll(".stop")) : [];
+    // On a phone the bake line is swiped by hand and the story is held still.
+    var narrow = window.matchMedia("(max-width: 860px)");
     function extras() {
       var h = window.innerHeight, b;
       if (lone) {
@@ -208,7 +210,7 @@
           lone.style.setProperty("--t", (1 - Math.pow(1 - v, 3)).toFixed(4));
         }
       }
-      if (pan) {
+      if (pan && !narrow.matches) {
         b = pan.getBoundingClientRect();
         if (b.top < h && b.bottom > 0) {
           var pp = Math.min(1, Math.max(0, -b.top / (b.height - h)));
@@ -239,7 +241,7 @@
     var crumb = stage.querySelector(".crumb");
     var rise = document.querySelector("[data-rise]");
     var tent = document.querySelector("[data-tent]");
-    var narrow = window.matchMedia("(max-width: 860px)");
+    var grid = story.querySelector(".story-grid");
     var queued = false;
 
     function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -254,18 +256,28 @@
 
       r = story.getBoundingClientRect();
       if (r.top < vh && r.bottom > 0) {
-        var sp = clamp(-r.top / (r.height - vh));
+        var small = narrow.matches;
+        var sp = clamp(-r.top / (r.height - (small ? grid.offsetHeight : vh)));
         stage.style.setProperty("--p", sp.toFixed(4));
         storyBg.style.setProperty("--p", sp.toFixed(4));
         chapters.forEach(function (chapter, i) {
-          var c = chapter.getBoundingClientRect();
-          var d = (c.top + c.height / 2 - vh / 2) / vh;
-          var o = narrow.matches
-            ? (d > 0 ? 1 : span(d, -0.42, -0.2))
-            : span(Math.abs(d), 0.6, 0.36);
+          var o, t;
+          if (small) {
+            // Held still: each chapter owns an equal share of the scroll. The
+            // words fade out, the screen wipes, the next words fade in.
+            var from = i / chapters.length, to = (i + 1) / chapters.length;
+            o = Math.min(i ? span(sp, from + 0.006, from + 0.05) : 1,
+                         i < chapters.length - 1 ? span(sp, to - 0.006, to - 0.05) : 1);
+            t = ease(span(sp, from - 0.05, from + 0.05));
+            chapter.classList.toggle("on", o > 0.5);
+          } else {
+            var c = chapter.getBoundingClientRect();
+            var d = (c.top + c.height / 2 - vh / 2) / vh;
+            o = span(Math.abs(d), 0.6, 0.36);
+            t = ease(span(c.top, vh * 0.92, vh * 0.3));
+          }
           chapter.style.setProperty("--o", ease(o).toFixed(4));
           if (i > 0) {
-            var t = ease(span(c.top, vh * 0.92, vh * 0.3));
             screens[i].style.setProperty("--t", t.toFixed(4));
             if (i === 2) crumb.style.setProperty("--k", t.toFixed(4));
           }

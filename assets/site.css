@@ -308,20 +308,33 @@
     @keyframes settle { from { opacity: 0; translate: -40% 44px; rotate: -2deg; } }
     @keyframes arrive { from { opacity: 0; translate: -130% 18px; filter: blur(6px); } }
     .story-grid { grid-template-columns: 1fr; gap: 0; }
-    /* The phone holds the top of the screen; each chapter rises under it. */
+    /* The story is held still on a phone: the device keeps the top, the words
+       change beneath it, and nothing scrolls past anything else. Heights are
+       the small viewport, so the address bar coming and going moves nothing. */
     html.sx .story-bg { display: none; }
-    html.sx .story-grid > * { grid-area: 1 / 1; }
-    html.sx .story-stage { align-items: flex-start; padding-top: 22px; }
-    html.sx .story-stage .phone { width: calc(56vh / 2.0977); width: calc(56dvh / 2.0977); }
-    html.sx .story-stage .crumb { left: -34%; bottom: 4%; }
-    html.sx .chapters { position: relative; z-index: 2; }
-    html.sx .chapter { justify-content: flex-end; }
-    html.sx .chapter-copy { margin-inline: calc(var(--gutter) * -1); padding: 44px var(--gutter) 30px; min-height: 38vh; min-height: 38dvh; background: linear-gradient(rgba(242, 231, 214, 0), var(--paper-deep) 34px); filter: none; }
+    html.sx .story { height: 400vh; height: 400svh; }
+    html.sx .story > .wrap { height: 100%; }
+    html.sx .story-grid { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; flex-direction: column; gap: 0; }
+    html.sx .story-stage { position: static; order: 1; flex: 1 1 0; min-height: 0; height: auto; padding: 26px 0 22px; }
+    html.sx .stage-inner { height: 100%; display: flex; align-items: center; }
+    html.sx .story-stage .phone { height: 100%; max-height: 60vh; max-height: 60svh; width: auto; }
+    html.sx .story-stage .crumb { left: -15%; bottom: 3%; }
+    html.sx .chapters { order: 2; flex: none; display: grid; padding-bottom: 28px; }
+    html.sx .chapter { grid-area: 1 / 1; min-height: 0; display: block; pointer-events: none; }
+    html.sx .chapter.on { pointer-events: auto; }
+    html.sx .chapter-copy { transform: translateY(calc((1 - var(--o, 0)) * 12px)); filter: none; }
+    html.sx .chapter .more { display: none; }
+    html.sx .chapter .more-link { margin-top: 12px; }
     .chapter h2 { font-size: 1.9rem; }
     .around-notes { grid-template-columns: 1fr; gap: 26px; }
     .tent-grid { grid-template-columns: 1fr; gap: 26px; }
     .tent-art { justify-self: start; width: min(380px, 100%); }
-    html.sx .tent-art { width: min(64vw, calc(40vh * .75)); justify-self: center; }
+    /* No pinning for the tent on a phone: it is simply the dark room. */
+    html.sx .tent { background: var(--tent); height: auto; padding-block: clamp(72px, 10vw, 130px); }
+    html.sx .tent-pin { position: static; height: auto; display: block; overflow: visible; }
+    html.sx .tent-pin::before { content: none; }
+    html.sx .tent-copy > *, html.sx .tent-copy > p.more, html.sx .tent-art, html.sx .tent-art img { opacity: 1; transform: none; }
+    html.sx .tent-art { width: min(380px, 100%); justify-self: start; }
     html.sx .tent h2 { font-size: 1.9rem; }
     .foot { justify-content: center; text-align: center; }
   }
@@ -395,7 +408,13 @@
   @media (max-width: 860px) {
     .stop { flex-basis: 72vw; }
     .stop.last { flex-basis: 86vw; }
-    html.sx .pan { height: 380vh; }
+    /* On a phone the bake line is swiped sideways by hand, not by scrolling down. */
+    html.sx .pan { height: auto; padding-block: clamp(64px, 9vw, 110px); overflow: hidden; }
+    html.sx .pan-pin { position: static; height: auto; display: block; overflow: visible; }
+    html.sx .pan-rail { width: auto; transform: none; will-change: auto; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); }
+    html.sx .pan-rail::-webkit-scrollbar { display: none; }
+    html.sx .stop { opacity: 1; }
+    html.sx .stop time { transform: none; }
   }
 
   .langs .short { display: none; }
