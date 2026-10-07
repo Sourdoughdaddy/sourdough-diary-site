@@ -646,3 +646,29 @@
     .lib-cards a::after { right: 18px; top: 18px; }
   }
   @media (prefers-reduced-motion: reduce) { .lib-cards a, .lib-jump a, .lib-cards a::after { transition: none; } }
+
+  /* ---------- Header: reading material sits in one menu, apart from the app's pages */
+  .nav-links { align-items: center; }
+  .more { position: relative; }
+  .more-btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 0; border: 0; background: none; color: var(--ink-soft); font: 600 15px/1.5 var(--sans); cursor: pointer; }
+  .more-btn::after { content: ""; width: 6px; height: 6px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform .3s var(--ease); }
+  .more:hover .more-btn, .more:focus-within .more-btn, .more:has([aria-current="page"]) .more-btn { color: var(--terracotta); }
+  .more-menu { position: absolute; z-index: 30; top: 100%; right: -18px; min-width: 220px; padding: 8px; border-radius: 18px; background: var(--paper); box-shadow: 0 24px 50px -20px rgba(var(--shadow), .5), 0 0 0 1px var(--rule); display: grid; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .2s var(--ease), transform .3s var(--ease), visibility 0s .3s; }
+  .more-menu::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+  .more:hover .more-menu, .more:focus-within .more-menu, .more.open .more-menu { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .more:hover .more-btn::after, .more:focus-within .more-btn::after, .more.open .more-btn::after { transform: rotate(225deg); margin-top: 3px; }
+  .nav-links .more-menu a { padding: 10px 14px; border-radius: 12px; font-size: 15px; white-space: nowrap; }
+  .nav-links .more-menu a:hover { background: var(--paper-deep); }
+  @media (max-width: 1080px) and (min-width: 861px) { .more-btn { font-size: 14px; } }
+  @media (max-width: 860px) {
+    .nav-links { align-items: stretch; }
+    .more { border-top: 1px solid var(--rule); padding-top: 12px; }
+    .more-btn { padding: 0; font-size: 13px; cursor: default; pointer-events: none; }
+    .more-btn::after { display: none; }
+    .more-menu { position: static; min-width: 0; padding: 0; border-radius: 0; background: none; box-shadow: none; opacity: 1; visibility: visible; transform: none; transition: none; }
+    .more-menu::before { display: none; }
+    .nav-links .more-menu a { padding: 14px 0; border-radius: 0; font-size: 17px; white-space: normal; border-top: 1px solid var(--rule); }
+    .nav-links .more-menu a:first-child { border-top: 0; }
+    .nav-links .more-menu a:hover { background: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { .more-menu, .more-btn::after { transition: none; } }

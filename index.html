@@ -19,7 +19,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Sourdough Diary", "operatingSystem": "iOS, iPadOS, watchOS", "applicationCategory": "LifestyleApplication", "description": "Sourdough Diary is an app for iPhone and iPad that guides you through sourdough baking. A guide for every bake, from starter to crust. Sourdough Diary learns your starter, times every stage and keeps a diary of every loaf.", "inLanguage": ["en", "de"], "url": "https://sourdoughdaddy.github.io/sourdough-diary-pages/", "image": "https://sourdoughdaddy.github.io/sourdough-diary-pages/assets/landing/og-en.jpg", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "author": {"@type": "Person", "name": "Simon Eder"}}</script>
 <link rel="icon" href="assets/landing/icon.png">
 <link rel="preload" as="image" href="assets/landing/phone-1-bake-en.jpg">
-<link rel="stylesheet" href="assets/site.css?v=10070543">
+<link rel="stylesheet" href="assets/site.css?v=10070544">
 </head>
 <body>
 
@@ -34,8 +34,16 @@
     <a href="baking.html"><span lang="en">Baking</span></a>
     <a href="diary.html"><span lang="en">Diary</span></a>
     <a href="learn.html"><span lang="en">Learn</span></a>
-    <a href="library/"><span lang="en">Library</span></a>
-    <a href="blog/" data-blog>Blog</a>
+    <div class="more">
+      <button class="more-btn" type="button" aria-expanded="false" aria-controls="resources"><span lang="en">Resources</span></button>
+      <div class="more-menu" id="resources">
+        <a href="library/"><span lang="en">Library</span></a>
+        <a href="blog/" data-blog>Blog</a>
+        <a href="calculator.html"><span lang="en">Starter calculator</span></a>
+        <a href="glossary.html"><span lang="en">Glossary</span></a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
   </nav>
   <div class="langs" role="group" aria-label="Language">
     <a href="./" hreflang="en" aria-label="English" aria-current="true"><span class="long">English</span><span class="short">EN</span></a>
@@ -276,6 +284,6 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=10070543"></script>
+<script src="assets/site.js?v=10070544"></script>
 </body>
 </html>

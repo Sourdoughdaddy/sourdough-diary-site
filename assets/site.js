@@ -126,6 +126,21 @@
       });
     }
 
+    // The Resources menu opens on hover and focus in CSS; a tap toggles it,
+    // and Escape or a tap elsewhere closes it.
+    var more = document.querySelector(".more");
+    if (more) {
+      var moreBtn = more.querySelector(".more-btn");
+      var shut = function () { more.classList.remove("open"); moreBtn.setAttribute("aria-expanded", "false"); };
+      moreBtn.addEventListener("click", function () {
+        moreBtn.setAttribute("aria-expanded", String(more.classList.toggle("open")));
+      });
+      document.addEventListener("click", function (e) { if (!more.contains(e.target)) shut(); });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { shut(); if (more.contains(document.activeElement)) document.activeElement.blur(); }
+      });
+    }
+
     // ---------- Scroll story. Layout is read once a frame and handed to
     // CSS as numbers between 0 and 1; the stylesheet does the drawing.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
