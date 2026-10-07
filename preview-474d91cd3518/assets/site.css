@@ -324,12 +324,13 @@
     html.sx .chapter.on { pointer-events: auto; }
     /* Nothing here follows the finger. Each chapter is a step; passing into
        it plays one short change that the browser runs by itself. */
-    html.sx .chapter-copy { opacity: 0; transform: translateY(14px); filter: none; transition: opacity .25s var(--ease), transform .25s var(--ease); }
-    html.sx .chapter.on .chapter-copy { opacity: 1; transform: none; transition: opacity .5s var(--ease) .22s, transform .6s var(--ease) .22s; }
+    html.sx .story { --slow: cubic-bezier(.45, 0, .2, 1); }
+    html.sx .chapter-copy { opacity: 0; transform: translateY(18px); filter: none; transition: opacity .6s var(--slow), transform .6s var(--slow); }
+    html.sx .chapter.on .chapter-copy { opacity: 1; transform: none; transition: opacity 1s var(--slow) .7s, transform 1.2s var(--slow) .7s; }
     html.sx .story-stage .phone { transform: rotate(-2deg); }
-    html.sx .story-stage .screens img + img { clip-path: none; opacity: 0; transform: translateY(5%); transition: opacity .45s var(--ease), transform .6s var(--ease); will-change: opacity, transform; }
+    html.sx .story-stage .screens img + img { clip-path: none; opacity: 0; transform: translateY(8%); transition: opacity 1.3s var(--slow), transform 1.6s var(--slow); will-change: opacity, transform; }
     html.sx .story-stage .screens img.show { opacity: 1; transform: none; }
-    html.sx .story-stage .crumb { opacity: 0; transform: translateY(40px) rotate(18deg); transition: opacity .5s var(--ease) .15s, transform .8s var(--ease) .15s; }
+    html.sx .story-stage .crumb { opacity: 0; transform: translateY(40px) rotate(18deg); transition: opacity 1.1s var(--slow) .5s, transform 1.5s var(--slow) .5s; }
     html.sx .story-stage .crumb.show { opacity: 1; transform: rotate(7deg); }
     html.sx .chapter .more { display: none; }
     html.sx .chapter .more-link { margin-top: 12px; }
