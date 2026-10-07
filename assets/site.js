@@ -142,6 +142,24 @@
       figure();
     }
 
+    // Glossary: type to narrow the list; letters with nothing left step aside.
+    var find = document.querySelector("[data-glossary-filter]");
+    if (find) {
+      var none = document.querySelector(".glo-none");
+      find.addEventListener("input", function () {
+        var q = find.value.trim().toLowerCase(), any = false;
+        document.querySelectorAll(".letter").forEach(function (sec) {
+          var shown = 0;
+          sec.querySelectorAll(".glossary > div").forEach(function (row) {
+            var hit = !q || row.textContent.toLowerCase().indexOf(q) !== -1;
+            row.hidden = !hit; if (hit) shown++;
+          });
+          sec.hidden = !shown; if (shown) any = true;
+        });
+        none.hidden = any;
+      });
+    }
+
     var menu = document.querySelector(".menu");
     if (menu) {
       var bar = menu.parentNode;
