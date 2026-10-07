@@ -242,6 +242,7 @@
     var rise = document.querySelector("[data-rise]");
     var tent = document.querySelector("[data-tent]");
     var grid = story.querySelector(".story-grid");
+    var shown = -1;
     var queued = false;
 
     function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
@@ -258,24 +259,28 @@
       if (r.top < vh && r.bottom > 0) {
         var small = narrow.matches;
         var sp = clamp(-r.top / (r.height - (small ? grid.offsetHeight : vh)));
-        stage.style.setProperty("--p", sp.toFixed(4));
-        storyBg.style.setProperty("--p", sp.toFixed(4));
+        if (!small) {
+          stage.style.setProperty("--p", sp.toFixed(4));
+          storyBg.style.setProperty("--p", sp.toFixed(4));
+        }
         chapters.forEach(function (chapter, i) {
           var o, t;
           if (small) {
-            // Held still: each chapter owns an equal share of the scroll. The
-            // words fade out, the screen wipes, the next words fade in.
-            var from = i / chapters.length, to = (i + 1) / chapters.length;
-            o = Math.min(i ? span(sp, from + 0.006, from + 0.05) : 1,
-                         i < chapters.length - 1 ? span(sp, to - 0.006, to - 0.05) : 1);
-            t = ease(span(sp, from - 0.05, from + 0.05));
-            chapter.classList.toggle("on", o > 0.5);
-          } else {
-            var c = chapter.getBoundingClientRect();
-            var d = (c.top + c.height / 2 - vh / 2) / vh;
-            o = span(Math.abs(d), 0.6, 0.36);
-            t = ease(span(c.top, vh * 0.92, vh * 0.3));
+            // Held still: each chapter owns an equal share of the scroll, and
+            // passing into it flips a class. The stylesheet plays the change.
+            var on = Math.min(chapters.length - 1, Math.floor(sp * chapters.length));
+            if (on !== shown) {
+              shown = on;
+              chapters.forEach(function (ch, k) { ch.classList.toggle("on", k === on); });
+              screens.forEach(function (img, k) { img.classList.toggle("show", k <= on); });
+              crumb.classList.toggle("show", on >= 2);
+            }
+            return;
           }
+          var c = chapter.getBoundingClientRect();
+          var d = (c.top + c.height / 2 - vh / 2) / vh;
+          o = span(Math.abs(d), 0.6, 0.36);
+          t = ease(span(c.top, vh * 0.92, vh * 0.3));
           chapter.style.setProperty("--o", ease(o).toFixed(4));
           if (i > 0) {
             screens[i].style.setProperty("--t", t.toFixed(4));
@@ -289,7 +294,10 @@
       if (r.top < vh && r.bottom > 0) rise.style.setProperty("--t", ease(span(r.top, vh, vh * 0.25)).toFixed(4));
 
       r = tent.getBoundingClientRect();
-      if (r.top < vh && r.bottom > 0) {
+      if (narrow.matches) {
+        // On a phone the tent opens once, when a third of the screen shows it.
+        if (r.top < vh * 0.68 && r.bottom > 0) tent.classList.add("in");
+      } else if (r.top < vh && r.bottom > 0) {
         var tp = clamp(-r.top / (r.height - vh));
         tent.style.setProperty("--c", ease(span(tp, 0, 0.5)).toFixed(4));
         tent.style.setProperty("--a", ease(span(tp, 0.28, 0.6)).toFixed(4));
