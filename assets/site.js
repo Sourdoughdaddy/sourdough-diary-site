@@ -1,6 +1,6 @@
   // Launch day: paste the App Store link between the quotes. Every
   // "Coming soon" on the page becomes a download button.
-  var STORE_URL = "";
+  var STORE_URL = "https://apps.apple.com/app/id6805917039";
 
   (function () {
     var root = document.documentElement;
